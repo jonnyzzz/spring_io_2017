@@ -9,6 +9,12 @@ repositories {
 }
 
 dependencies {
+  compile "org.jetbrains.kotlin:kotlin-stdlib"
+  compile "org.jetbrains.kotlin:kotlin-reflect"
+
+  compile "org.jetbrains.kotlin:kotlin-stdlib-jre7"
+  compile "org.jetbrains.kotlin:kotlin-stdlib-jre8"
+
   compile 'org.springframework:spring-context:4.3.8.RELEASE'
 }
 
