@@ -19,6 +19,7 @@ class AdHocCoreService : CoreService {
 @Component
 class Extensions : ExtensionRegistry, ExtensionHolder {
   override fun register(e: Extension) {
+    println("ExtensionRegistry: Registered ${e.javaClass.simpleName}")
     //NOP
   }
 
