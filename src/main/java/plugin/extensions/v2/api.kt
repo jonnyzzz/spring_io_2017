@@ -21,3 +21,9 @@ interface ExtensionHolder {
 interface CoreService {
   fun `loren ipsum`()
 }
+
+
+fun allUsed() {
+  ExtensionRegistry::register
+  ExtensionHolder::extensions
+}
