@@ -3,8 +3,6 @@ package plugin.extensions.v3.core
 import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.stereotype.Component
 
-fun main(args: Array<String>) = RootContext().start()
-
 class RootContext {
   fun start() {
     val root = AnnotationConfigApplicationContext()
