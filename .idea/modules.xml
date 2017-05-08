@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/spring_io_2017.iml" filepath="$PROJECT_DIR$/spring_io_2017.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring_io_2017.iml" filepath="$PROJECT_DIR$/.idea/modules/spring_io_2017.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring_io_2017_main.iml" filepath="$PROJECT_DIR$/.idea/modules/spring_io_2017_main.iml" group="spring_io_2017" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring_io_2017_test.iml" filepath="$PROJECT_DIR$/.idea/modules/spring_io_2017_test.iml" group="spring_io_2017" />
     </modules>
   </component>
 </project>
