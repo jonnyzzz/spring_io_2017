@@ -1,6 +1,5 @@
 package plugin.extensions.v1.core
 
-import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.event.ContextStartedEvent
 import org.springframework.context.event.EventListener
@@ -20,18 +19,12 @@ class PluginLoader(
     println("PluginLoader: loading plugins...")
 
     detector.detectPlugins().forEach {
-      loadPlugins(e.applicationContext, it)
+      val context = AnnotationConfigApplicationContext()
+      context.parent = e.applicationContext
+      context.displayName = "plugin: $it"
+      context.scan(ExtensionRegistry::class.java.`package`.name + "." + it)
+      context.refresh()
     }
-  }
-
-  private fun loadPlugins(parent: ApplicationContext, name: String) {
-    val context = AnnotationConfigApplicationContext()
-    context.parent = parent
-    context.displayName = "plugin: $name"
-
-    context.scan(ExtensionRegistry::class.java.`package`.name + "." + name)
-
-    context.refresh()
   }
 }
 
