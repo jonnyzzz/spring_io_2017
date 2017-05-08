@@ -11,7 +11,13 @@ class RootContext {
   fun start() {
     val root = AnnotationConfigApplicationContext()
     root.scan(RootContext::class.java.`package`.name)
+
+    println()
+    println("RootContext: RefreshEvent")
     root.refresh()
+
+    println()
+    println("RootContext: StartEvent")
     root.start()
 
     println()
