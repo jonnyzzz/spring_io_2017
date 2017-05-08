@@ -3,4 +3,6 @@ out/
 lib/
 .gradle/
 build/
+**/*.iml
+
 
