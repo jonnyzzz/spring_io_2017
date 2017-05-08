@@ -2,8 +2,6 @@ package plugin.extensions.v1.core
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.stereotype.Component
-import plugin.extensions.v1.ExtensionHolder
-import plugin.extensions.v1.ExtensionRegistry
 
 fun main(args: Array<String>) = RootContext().start()
 
@@ -40,14 +38,3 @@ class PrivateComponent {
     println("I'm private component")
   }
 }
-
-
-
-fun usesAll() {
-  ExtensionRegistry::class
-  ExtensionHolder::class
-  ExtensionRegistry::register
-  ExtensionHolder::extensions
-}
-
-

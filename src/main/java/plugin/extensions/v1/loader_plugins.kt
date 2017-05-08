@@ -4,7 +4,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.event.ContextStartedEvent
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
-import plugin.extensions.v1.ExtensionRegistry
+import plugin.extensions.v1.CoreService
 
 @Component
 class PluginLoader(
@@ -22,7 +22,7 @@ class PluginLoader(
       val context = AnnotationConfigApplicationContext()
       context.parent = e.applicationContext
       context.displayName = "plugin: $it"
-      context.scan(ExtensionRegistry::class.java.`package`.name + "." + it)
+      context.scan(CoreService::class.java.`package`.name + "." + it)
       context.refresh()
     }
   }
