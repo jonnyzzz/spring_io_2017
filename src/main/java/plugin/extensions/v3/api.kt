@@ -16,7 +16,7 @@ interface ExtensionRegistry {
 
 @ProvidedByCore
 interface ExtensionHolder {
-  val extensions: List<Exception>
+  val extensions: List<Extension>
 }
 
 @ProvidedByCore

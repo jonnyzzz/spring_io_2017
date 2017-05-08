@@ -20,6 +20,11 @@ class RootContext {
 
     println()
     println("RootContext: Start Completed")
+    println()
+    println()
+
+    root.getBean(ServerBean::class.java).run()
+
     //wait
     readLine()
   }

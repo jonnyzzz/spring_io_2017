@@ -5,6 +5,7 @@ import plugin.extensions.v3.CoreService
 import plugin.extensions.v3.Extension
 import plugin.extensions.v3.ExtensionHolder
 import plugin.extensions.v3.ExtensionRegistry
+import java.util.*
 
 @Component
 class AdHocCoreService : CoreService {
@@ -18,11 +19,13 @@ class AdHocCoreService : CoreService {
 
 @Component
 class Extensions : ExtensionRegistry, ExtensionHolder {
+  private val holder = IdentityHashMap<Extension, Extension>()
+
   override fun register(e: Extension) {
     println("ExtensionRegistry: Registered ${e.javaClass.simpleName}")
-    //NOP
+    holder.put(e, e)
   }
 
-  override val extensions: List<Exception>
-    get() = listOf()
+  override val extensions: List<Extension>
+    get() = holder.keys.filterNotNull().toList().sortedBy { it.javaClass.simpleName }
 }
