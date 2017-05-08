@@ -1,7 +1,10 @@
 package plugin.extensions.v3.core
 
 import org.springframework.stereotype.Component
-import plugin.extensions.v1.CoreService
+import plugin.extensions.v3.CoreService
+import plugin.extensions.v3.Extension
+import plugin.extensions.v3.ExtensionHolder
+import plugin.extensions.v3.ExtensionRegistry
 
 @Component
 class AdHocCoreService : CoreService {
@@ -11,4 +14,14 @@ class AdHocCoreService : CoreService {
             "\r\n             sodales. Sed nec feugiat mi. Vivamus purus diam, interdum " +
             "\r\n             eleifend risus non, pharetra laoreet est. Mauris eu dolor... ")
   }
+}
+
+@Component
+class Extensions : ExtensionRegistry, ExtensionHolder {
+  override fun register(e: Extension) {
+    //NOP
+  }
+
+  override val extensions: List<Exception>
+    get() = listOf()
 }

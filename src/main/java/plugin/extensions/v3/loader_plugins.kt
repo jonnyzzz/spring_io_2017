@@ -4,7 +4,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.event.ContextStartedEvent
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
-import plugin.extensions.v1.ExtensionRegistry
+import plugin.extensions.v3.ExtensionRegistry
 
 @Component
 class PluginLoader(
