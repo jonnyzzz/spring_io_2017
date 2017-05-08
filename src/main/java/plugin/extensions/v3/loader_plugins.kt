@@ -30,9 +30,11 @@ class PluginLoader(
       context.scan(it)
       context.refresh()
 
-      context.getBeansOfType(Extension::class.java).values.forEach {
-        registry.register(it)
-      }
+      context.getBeansOfType(Extension::class.java)
+             .values
+             .forEach {
+               registry.register(it)
+             }
     }
   }
 }
