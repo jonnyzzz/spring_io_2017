@@ -40,3 +40,8 @@ class ServiceFromThePluginImpl : ServiceFromThePlugin {
 class `It Depends On Exported Service`(
         service:  ServiceFromThePlugin
 )
+
+@Component
+class `It Depends On Exported Service2`(
+        service:  ServiceFromThePluginImpl
+)
