@@ -19,6 +19,6 @@ include ":src:v7-guava-collision:plugin-2"
 include ":src:v7-guava-collision:main"
 
 include ":src:v8-module"
-include ":src:v9-module"
+include ":src:v9-proxy"
 
 
