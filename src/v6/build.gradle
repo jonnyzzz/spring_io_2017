@@ -1,0 +1,23 @@
+configure(project(":src:v6:core")) {
+    dependencies {
+        compile project(":src:v6:api")
+    }
+}
+
+configure(project(":src:v6:main")) {
+    dependencies {
+        compile project(":src:v6:api")
+        compile project(":src:v6:core")
+        compile project(":src:v6:plugin-1")
+        compile project(":src:v6:plugin-2")
+    }
+}
+
+configure([
+        project(":src:v6:core"),
+        project(":src:v6:plugin-1"),
+        project(":src:v6:plugin-2")]) {
+    dependencies {
+        compile project(":src:v6:api")
+    }
+}

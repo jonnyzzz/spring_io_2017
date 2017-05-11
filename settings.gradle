@@ -6,5 +6,11 @@ include ":src:v3"
 include ":src:v4"
 include ":src:v5"
 
+include ":src:v6:api"
+include ":src:v6:core"
+include ":src:v6:plugin-1"
+include ":src:v6:plugin-2"
+include ":src:v6:main"
+
 
 
