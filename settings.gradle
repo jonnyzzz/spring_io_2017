@@ -22,3 +22,8 @@ include ":src:v8-module"
 include ":src:v9-proxy"
 
 
+include ":src:va-projects:api"
+include ":src:va-projects:core"
+include ":src:va-projects:plugin-1"
+include ":src:va-projects:plugin-2"
+include ":src:va-projects:main"
