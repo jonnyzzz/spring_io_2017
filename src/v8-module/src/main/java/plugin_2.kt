@@ -2,11 +2,16 @@ package plugin.extensions.plugin_2
 
 import org.springframework.stereotype.Component
 import plugin.extensions.Extension
+import plugin.extensions.ServiceFromThePlugin
 
 @Component
-class Plugin2Component {
+class Plugin2Component(
+        service: ServiceFromThePlugin
+) {
   init {
     println("Plugin 2 Component")
+
+    service.test()
   }
 }
 
