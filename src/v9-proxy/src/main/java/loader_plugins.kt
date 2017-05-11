@@ -43,11 +43,12 @@ abstract class PluginLoader(
     context.scan(Extension::class.java.`package`.name + "." + name)
 
     (context.beanFactory as DefaultListableBeanFactory).autowireCandidateResolver =
-      object : SimpleAutowireCandidateResolver() {
-        override fun isAutowireCandidate(bdHolder: BeanDefinitionHolder, descriptor: DependencyDescriptor): Boolean {
-          return super.isAutowireCandidate(bdHolder, descriptor) && beanFactoryName != bdHolder.beanDefinition.factoryBeanName
-        }
-      }
+            object : SimpleAutowireCandidateResolver() {
+              override fun isAutowireCandidate(bdHolder: BeanDefinitionHolder,
+                                               descriptor: DependencyDescriptor)
+                      = super.isAutowireCandidate(bdHolder, descriptor) &&
+                      beanFactoryName != bdHolder.beanDefinition.factoryBeanName
+            }
 
     context.refresh()
 
