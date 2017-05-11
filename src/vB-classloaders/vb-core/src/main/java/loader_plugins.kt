@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component
 import plugin.extensions.Extension
 import plugin.extensions.ServiceFromThePlugin1
 import plugin.extensions.ServiceFromThePlugin2
+import java.io.File
+import java.net.URLClassLoader
 
 abstract class PluginLoader(
         val name: String
@@ -22,11 +24,19 @@ abstract class PluginLoader(
   override fun afterPropertiesSet() {
     println("PluginLoader: loading plugin $name...")
 
+    val classpath = System.getenv("classpath_$name")
+    println("$name Classpath: $classpath")
+
+    val ucp = classpath.split(File.pathSeparatorChar).map { File(it).toURI().toURL() }
+
+    val classloader = URLClassLoader(ucp.toTypedArray(), javaClass.classLoader)
+
     val context = AnnotationConfigApplicationContext()
     this.context = context
 
     context.parent = parentContext
     context.displayName = "plugin: $name"
+    context.classLoader = classloader
     context.scan(Extension::class.java.`package`.name + "." + name)
     context.refresh()
 

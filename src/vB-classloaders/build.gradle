@@ -10,8 +10,6 @@ configure(project("${baseName}main")) {
     dependencies {
         compile project("${baseName}api")
         compile project("${baseName}core")
-        compile project("${baseName}plugin-1")
-        compile project("${baseName}plugin-2")
     }
 }
 
@@ -40,4 +38,9 @@ configure(project("${baseName}plugin-2")) {
 task runExample(type: JavaExec) {
     main = 'plugin.extensions.core.MainKt'
     classpath project("${baseName}main").sourceSets.main.runtimeClasspath
+
+    def commonClasspath = project("${baseName}core").sourceSets.main.runtimeClasspath
+
+    environment "classpath_plugin_1", (project("${baseName}plugin-1").sourceSets.main.runtimeClasspath - commonClasspath).asPath
+    environment "classpath_plugin_2", (project("${baseName}plugin-2").sourceSets.main.runtimeClasspath - commonClasspath).asPath
 }

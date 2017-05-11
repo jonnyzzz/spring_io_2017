@@ -33,10 +33,8 @@ class ServiceFromThePlugin2Impl : ServiceFromThePlugin2 {
 
 
 @Component
-class PluginGuava {
+class PluginGuavaVersion {
   init {
-    println("Plugin 2 Guava")
-
     val clazz = ImmutableList::class.java
     val guava = clazz.getResource("/" + clazz.name.replace(".", "/") + ".class").toString()
 
