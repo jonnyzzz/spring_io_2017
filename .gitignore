@@ -2,7 +2,7 @@
 out/
 lib/
 .gradle/
-build/
+**/build/
 **/*.iml
 
 
