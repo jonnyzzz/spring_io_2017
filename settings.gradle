@@ -18,5 +18,6 @@ include ":src:v7-guava-collision:plugin-1"
 include ":src:v7-guava-collision:plugin-2"
 include ":src:v7-guava-collision:main"
 
+include ":src:v8-module"
 
 
