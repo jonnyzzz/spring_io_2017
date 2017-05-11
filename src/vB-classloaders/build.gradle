@@ -1,0 +1,25 @@
+final String baseName = project.path + ":vb-"
+
+configure(project("${baseName}core")) {
+    dependencies {
+        compile project("${baseName}api")
+    }
+}
+
+configure(project("${baseName}main")) {
+    dependencies {
+        compile project("${baseName}api")
+        compile project("${baseName}core")
+        compile project("${baseName}plugin-1")
+        compile project("${baseName}plugin-2")
+    }
+}
+
+configure([
+        project("${baseName}core"),
+        project("${baseName}plugin-1"),
+        project("${baseName}plugin-2")]) {
+    dependencies {
+        compile project("${baseName}api")
+    }
+}
