@@ -1,44 +1,37 @@
 package plugin.extensions.core
 
+import org.springframework.beans.factory.InitializingBean
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.AnnotationConfigApplicationContext
-import org.springframework.context.event.ContextStartedEvent
-import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
 import plugin.extensions.Extension
 
-@Component
-class PluginLoader(
-        val detector: PluginDetector,
-        val registry: ExtensionRegistry
-) {
-  init {
-    println("I'm plugin loader")
-  }
+abstract class PluginLoader(
+        val name: String
+) : InitializingBean {
+  @Autowired lateinit var registry: ExtensionRegistry
+  @Autowired lateinit var parentContext : ApplicationContext
 
-  @EventListener
-  fun onContextStarted(e: ContextStartedEvent) {
-    println("PluginLoader: loading plugins...")
+  override fun afterPropertiesSet() {
+    println("PluginLoader: loading plugin $name...")
 
-    val packages = detector.detectPlugins().map { Extension::class.java.`package`.name + "." + it }
-    val parentContext = e.applicationContext
+    val context = AnnotationConfigApplicationContext()
+    context.parent = parentContext
+    context.displayName = "plugin: $name"
+    context.scan(Extension::class.java.`package`.name + "." + name)
+    context.refresh()
 
-    packages.forEach {
-      val context = AnnotationConfigApplicationContext()
-      context.parent = parentContext
-      context.displayName = "plugin: $it"
-      context.scan(it)
-      context.refresh()
-
-      context.getBeansOfType(Extension::class.java)
-             .values
-             .forEach {
-               registry.register(it)
-             }
-    }
+    context.getBeansOfType(Extension::class.java)
+            .values
+            .forEach {
+              registry.register(it)
+            }
   }
 }
 
 @Component
-class PluginDetector {
-  fun detectPlugins() = listOf("plugin_1", "plugin_2")
-}
+class Plugin_1Loader : PluginLoader("plugin_1")
+
+@Component
+class Plugin_2Loader : PluginLoader("plugin_2")
