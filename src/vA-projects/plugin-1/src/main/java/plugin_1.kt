@@ -2,6 +2,7 @@ package plugin.extensions.plugin_1
 
 import org.springframework.stereotype.Component
 import plugin.extensions.CoreService
+import plugin.extensions.ServiceFromThePlugin1
 
 @Component
 class Plugin1Component {
@@ -21,5 +22,17 @@ class Plugin1Service(
     //call common component
     //TODO: Not from constructor, please!
     core.`loren ipsum`()
+  }
+}
+
+
+@Component
+class ServiceFromThePlugin1Impl : ServiceFromThePlugin1 {
+  override fun test() {
+    println("Plugin 1 Stack")
+    Thread.currentThread().stackTrace.drop(1).forEach {
+      println("  ${it.className}.${it.methodName}")
+    }
+    println()
   }
 }

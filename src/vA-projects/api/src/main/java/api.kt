@@ -17,3 +17,16 @@ interface ExtensionHolder {
 interface CoreService {
   fun `loren ipsum`()
 }
+
+
+@ProvidedByPlugin
+interface ServiceFromThePlugin1 {
+  fun test()
+}
+
+@ProvidedByPlugin
+interface ServiceFromThePlugin2 {
+  fun test()
+}
+
+
