@@ -36,7 +36,8 @@ abstract class PluginLoader(
     this.context = context
   }
 
-  protected inline fun <reified T> getPluginBean() : T = context!!.getBean(T::class.java)
+  protected inline fun <reified T> getPluginBean()
+          = context!!.getBean(T::class.java)!!
 }
 
 @Component
