@@ -12,5 +12,11 @@ include ":src:v6:plugin-1"
 include ":src:v6:plugin-2"
 include ":src:v6:main"
 
+include ":src:v7:api"
+include ":src:v7:core"
+include ":src:v7:plugin-1"
+include ":src:v7:plugin-2"
+include ":src:v7:main"
+
 
 
