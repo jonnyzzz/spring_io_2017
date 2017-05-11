@@ -34,3 +34,9 @@ class ServiceFromThePluginImpl : ServiceFromThePlugin {
     }
   }
 }
+
+
+@Component
+class `It Depends On Exported Service`(
+        service:  ServiceFromThePlugin
+)
