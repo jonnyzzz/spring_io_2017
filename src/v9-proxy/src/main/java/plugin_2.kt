@@ -10,8 +10,6 @@ class Plugin2Component(
 ) {
   init {
     println("Plugin 2 Component")
-
-    service.test()
   }
 }
 
