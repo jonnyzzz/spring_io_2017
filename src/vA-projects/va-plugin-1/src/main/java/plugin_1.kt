@@ -29,6 +29,8 @@ class Plugin1Service(
 @Component
 class ServiceFromThePlugin1Impl : ServiceFromThePlugin1 {
   override fun test() {
+  }
+  init {
     println("Plugin 1 Stack")
     Thread.currentThread().stackTrace.drop(1).forEach {
       println("  ${it.className}.${it.methodName}")

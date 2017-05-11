@@ -22,6 +22,9 @@ class Extension2Impl : Extension {
 @Component
 class ServiceFromThePlugin2Impl : ServiceFromThePlugin2 {
   override fun test() {
+  }
+
+  init {
     println("Plugin 2 Stack")
     Thread.currentThread().stackTrace.drop(1).forEach {
       println("  ${it.className}.${it.methodName}")
