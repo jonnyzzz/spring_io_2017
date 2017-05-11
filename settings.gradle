@@ -2,7 +2,10 @@ rootProject.name = "Spring I/o 2017. SubContainers Demo"
 
 
 new File(rootProject.getProjectDir(), "src").eachDir { dir ->
-  include ":src:${dir.name}"
+  final String name = dir.name
+  if (!name.equals("build")) {
+    include ":src:${dir.name}"
+  }
 }
 
 
