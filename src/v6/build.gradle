@@ -1,23 +1,25 @@
-configure(project(":src:v6:core")) {
+final String baseName = project.path
+
+configure(project("$baseName:core")) {
     dependencies {
-        compile project(":src:v6:api")
+        compile project("$baseName:api")
     }
 }
 
-configure(project(":src:v6:main")) {
+configure(project("$baseName:main")) {
     dependencies {
-        compile project(":src:v6:api")
-        compile project(":src:v6:core")
-        compile project(":src:v6:plugin-1")
-        compile project(":src:v6:plugin-2")
+        compile project("$baseName:api")
+        compile project("$baseName:core")
+        compile project("$baseName:plugin-1")
+        compile project("$baseName:plugin-2")
     }
 }
 
 configure([
-        project(":src:v6:core"),
-        project(":src:v6:plugin-1"),
-        project(":src:v6:plugin-2")]) {
+        project("$baseName:core"),
+        project("$baseName:plugin-1"),
+        project("$baseName:plugin-2")]) {
     dependencies {
-        compile project(":src:v6:api")
+        compile project("$baseName:api")
     }
 }
