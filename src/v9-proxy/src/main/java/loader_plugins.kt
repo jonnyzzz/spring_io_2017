@@ -14,6 +14,7 @@ import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
 import plugin.extensions.Extension
 import plugin.extensions.ServiceFromThePlugin
+import plugin.extensions.ServiceFromThePlugin2
 import java.lang.reflect.InvocationHandler
 import java.lang.reflect.InvocationTargetException
 import java.lang.reflect.Method
@@ -111,4 +112,10 @@ class Plugin_1Loader : PluginLoader("plugin_1") {
 }
 
 @Component
-class Plugin_2Loader : PluginLoader("plugin_2")
+class Plugin_2Loader : PluginLoader("plugin_2") {
+  @Bean
+  fun getSharedBean2(): ServiceFromThePlugin2
+          = getPluginBean()
+
+}
+

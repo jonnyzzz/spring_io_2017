@@ -3,9 +3,12 @@ package plugin.extensions.plugin_1
 import org.springframework.stereotype.Component
 import plugin.extensions.CoreService
 import plugin.extensions.ServiceFromThePlugin
+import plugin.extensions.ServiceFromThePlugin2
 
 @Component
-class Plugin1Component {
+class Plugin1Component(
+        s: ServiceFromThePlugin2
+) {
   init {
     println("Plugin 1 Component")
   }
@@ -27,11 +30,16 @@ class Plugin1Service(
 
 @Component
 class ServiceFromThePluginImpl : ServiceFromThePlugin {
-  override fun test() {
-    println("Service from Plugin 1:")
-    Thread.currentThread().stackTrace.drop(1).take(8).forEach {
+  init {
+    println("Plugin 1 Stack")
+    Thread.currentThread().stackTrace.drop(1).forEach {
       println("  ${it.className}.${it.methodName}")
     }
+    println()
+  }
+
+  override fun test() {
+    //
   }
 }
 

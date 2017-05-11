@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.stereotype.Component
 import plugin.extensions.Extension
 import plugin.extensions.ServiceFromThePlugin
+import plugin.extensions.ServiceFromThePlugin2
 
 abstract class PluginLoader(
         val name: String
@@ -22,6 +23,8 @@ abstract class PluginLoader(
     println("PluginLoader: loading plugin $name...")
 
     val context = AnnotationConfigApplicationContext()
+    this.context = context
+
     context.parent = parentContext
     context.displayName = "plugin: $name"
     context.scan(Extension::class.java.`package`.name + "." + name)
@@ -33,7 +36,6 @@ abstract class PluginLoader(
               registry.register(it)
             }
 
-    this.context = context
   }
 
   protected inline fun <reified T> getPluginBean()
@@ -48,4 +50,9 @@ class Plugin_1Loader : PluginLoader("plugin_1") {
 }
 
 @Component
-class Plugin_2Loader : PluginLoader("plugin_2")
+class Plugin_2Loader : PluginLoader("plugin_2") {
+  @Bean
+  fun getSharedBean2(): ServiceFromThePlugin2
+          = getPluginBean()
+
+}

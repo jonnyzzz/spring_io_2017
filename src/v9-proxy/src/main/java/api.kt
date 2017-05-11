@@ -23,3 +23,8 @@ interface CoreService {
 interface ServiceFromThePlugin {
   fun test()
 }
+
+@ProvidedByPlugin
+interface ServiceFromThePlugin2 {
+  fun test()
+}
