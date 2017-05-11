@@ -1,37 +1,37 @@
-final String baseName = project.path
+final String baseName = project.path + ":v7-"
 
-configure(project("$baseName:core")) {
+configure(project("${baseName}core")) {
     dependencies {
-        compile project("$baseName:api")
+        compile project("${baseName}api")
     }
 }
 
-configure(project("$baseName:main")) {
+configure(project("${baseName}main")) {
     dependencies {
-        compile project("$baseName:api")
-        compile project("$baseName:core")
-        compile project("$baseName:plugin-2")
-        compile project("$baseName:plugin-1")
+        compile project("${baseName}api")
+        compile project("${baseName}core")
+        compile project("${baseName}plugin-2")
+        compile project("${baseName}plugin-1")
     }
 }
 
-configure(project("$baseName:core")) {
+configure(project("${baseName}core")) {
     dependencies {
-        compile project("$baseName:api")
+        compile project("${baseName}api")
     }
 }
 
 
-configure(project("$baseName:plugin-1")) {
+configure(project("${baseName}plugin-1")) {
     dependencies {
-        compile project("$baseName:api")
+        compile project("${baseName}api")
         compile 'com.google.guava:guava:21.0'
     }
 }
 
-configure(project("$baseName:plugin-2")) {
+configure(project("${baseName}plugin-2")) {
     dependencies {
-        compile project("$baseName:api")
+        compile project("${baseName}api")
         compile 'com.google.guava:guava:14.0'
     }
 }
