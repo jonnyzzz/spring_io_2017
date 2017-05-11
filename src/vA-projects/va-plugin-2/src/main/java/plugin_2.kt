@@ -25,10 +25,6 @@ class ServiceFromThePlugin2Impl : ServiceFromThePlugin2 {
   }
 
   init {
-    println("Plugin 2 Stack")
-    Thread.currentThread().stackTrace.drop(1).forEach {
-      println("  ${it.className}.${it.methodName}")
-    }
-    println()
+    println("Plugin 2 Exported")
   }
 }
