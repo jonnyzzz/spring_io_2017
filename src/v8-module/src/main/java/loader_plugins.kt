@@ -42,7 +42,8 @@ abstract class PluginLoader(
 @Component
 class Plugin_1Loader : PluginLoader("plugin_1") {
   @Bean
-  fun getSharedBean() : ServiceFromThePlugin = getPluginBean()
+  fun getSharedBean(): ServiceFromThePlugin
+          = getPluginBean()
 }
 
 @Component
