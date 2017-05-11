@@ -1,5 +1,6 @@
 package plugin.extensions.plugin_2
 
+import com.google.common.collect.ImmutableList
 import org.springframework.stereotype.Component
 import plugin.extensions.Extension
 import plugin.extensions.ServiceFromThePlugin2
@@ -26,5 +27,23 @@ class ServiceFromThePlugin2Impl : ServiceFromThePlugin2 {
 
   init {
     println("Plugin 2 Exported")
+  }
+}
+
+
+
+@Component
+class PluginGuava {
+  init {
+    println("Plugin 2 Guava")
+
+    val clazz = ImmutableList::class.java
+    val guava = clazz.getResource("/" + clazz.name.replace(".", "/") + ".class").toString()
+
+    when {
+      guava.contains("guava-21.0.jar") -> println("Plugin 2 Guava 21(!) URL " + guava)
+      guava.contains("guava-14.0.jar") -> println("Plugin 2 Guava 14    URL " + guava)
+      else ->                             println("Plugin 2 Guava ???   URL " + guava)
+    }
   }
 }

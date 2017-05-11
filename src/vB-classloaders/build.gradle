@@ -15,11 +15,23 @@ configure(project("${baseName}main")) {
     }
 }
 
-configure([
-        project("${baseName}core"),
-        project("${baseName}plugin-1"),
-        project("${baseName}plugin-2")]) {
+configure(project("${baseName}core")) {
     dependencies {
         compile project("${baseName}api")
+    }
+}
+
+
+configure(project("${baseName}plugin-1")) {
+    dependencies {
+        compile project("${baseName}api")
+        compile 'com.google.guava:guava:21.0'
+    }
+}
+
+configure(project("${baseName}plugin-2")) {
+    dependencies {
+        compile project("${baseName}api")
+        compile 'com.google.guava:guava:14.0'
     }
 }
