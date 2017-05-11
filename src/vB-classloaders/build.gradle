@@ -35,3 +35,9 @@ configure(project("${baseName}plugin-2")) {
         compile 'com.google.guava:guava:14.0'
     }
 }
+
+
+task runExample(type: JavaExec) {
+    main = 'plugin.extensions.core.MainKt'
+    classpath project("${baseName}main").sourceSets.main.runtimeClasspath
+}
