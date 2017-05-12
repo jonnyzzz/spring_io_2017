@@ -1,31 +1,29 @@
-final String baseName = ":src:vA-projects:va-"
-
-configure(project("${baseName}core")) {
-    dependencies {
-        compile project("${baseName}api")
-    }
+configure(project(":src:vA-projects:va-core")) {
+  dependencies {
+    compile project(":src:vA-projects:va-api")
+  }
 }
 
-configure(project("${baseName}main")) {
-    dependencies {
-        compile project("${baseName}api")
-        compile project("${baseName}core")
-        compile project("${baseName}plugin-1")
-        compile project("${baseName}plugin-2")
-    }
+configure(project(":src:vA-projects:va-main")) {
+  dependencies {
+    compile project(":src:vA-projects:va-api")
+    compile project(":src:vA-projects:va-core")
+    compile project(":src:vA-projects:va-plugin-1")
+    compile project(":src:vA-projects:va-plugin-2")
+  }
 }
 
 configure([
-        project("${baseName}core"),
-        project("${baseName}plugin-1"),
-        project("${baseName}plugin-2")]) {
-    dependencies {
-        compile project("${baseName}api")
-    }
+        project(":src:vA-projects:va-core"),
+        project(":src:vA-projects:va-plugin-1"),
+        project(":src:vA-projects:va-plugin-2")]) {
+  dependencies {
+    compile project(":src:vA-projects:va-api")
+  }
 }
 
 
 task runExample(type: JavaExec) {
-    main = 'plugin.extensions.core.MainKt'
-    classpath project(":src:vA-projects:va-main").sourceSets.main.runtimeClasspath
+  main = 'plugin.extensions.core.MainKt'
+  classpath project(":src:vA-projects:va-main").sourceSets.main.runtimeClasspath
 }
