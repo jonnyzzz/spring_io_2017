@@ -17,9 +17,8 @@ class Plugin1Service(
 ) {
   init {
     println("Plugin 1 Service")
-
+    
     //call common component
-    //TODO: Not from constructor, please!
     core.`loren ipsum`()
   }
 }
