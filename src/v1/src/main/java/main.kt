@@ -1,4 +1,4 @@
-package plugin.extensions.v1.core
+package plugin.extensions.core
 
 fun main(args: Array<String>) = RootContext().start()
 

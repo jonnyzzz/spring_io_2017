@@ -1,4 +1,4 @@
-package plugin.extensions.v1.plugin_2
+package plugin.extensions.plugin_2
 
 import org.springframework.stereotype.Component
 

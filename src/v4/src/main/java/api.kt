@@ -1,4 +1,4 @@
-package plugin.extensions.v4
+package plugin.extensions
 
 annotation class ProvidedByPlugin
 annotation class ProvidedByCore

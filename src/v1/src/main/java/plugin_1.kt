@@ -1,7 +1,7 @@
-package plugin.extensions.v1.plugin_1
+package plugin.extensions.plugin_1
 
 import org.springframework.stereotype.Component
-import plugin.extensions.v1.CoreService
+import plugin.extensions.CoreService
 
 @Component
 class Plugin1Component {

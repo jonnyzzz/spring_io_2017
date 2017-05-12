@@ -1,4 +1,4 @@
-package plugin.extensions.v1.core
+package plugin.extensions.core
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.stereotype.Component

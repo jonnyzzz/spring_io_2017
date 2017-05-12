@@ -1,7 +1,7 @@
-package plugin.extensions.v4.core
+package plugin.extensions.core
 
 import org.springframework.stereotype.Component
-import plugin.extensions.v4.ExtensionHolder
+import plugin.extensions.ExtensionHolder
 
 @Component
 class ServerBean(

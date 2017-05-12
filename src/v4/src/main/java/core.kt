@@ -1,10 +1,10 @@
-package plugin.extensions.v4.core
+package plugin.extensions.core
 
 import org.springframework.stereotype.Component
-import plugin.extensions.v4.CoreService
-import plugin.extensions.v4.Extension
-import plugin.extensions.v4.ExtensionHolder
-import plugin.extensions.v4.ExtensionRegistry
+import plugin.extensions.CoreService
+import plugin.extensions.Extension
+import plugin.extensions.ExtensionHolder
+import plugin.extensions.ExtensionRegistry
 import java.util.*
 
 @Component

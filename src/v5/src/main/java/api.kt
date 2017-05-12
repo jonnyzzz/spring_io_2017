@@ -1,7 +1,8 @@
-package plugin.extensions.v5
+package plugin.extensions
 
 annotation class ProvidedByPlugin
 annotation class ProvidedByCore
+
 
 @ProvidedByPlugin
 interface Extension {

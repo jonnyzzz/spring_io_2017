@@ -1,4 +1,4 @@
-package plugin.extensions.v1
+package plugin.extensions
 
 interface CoreService {
   fun `loren ipsum`()

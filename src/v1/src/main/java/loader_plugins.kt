@@ -1,10 +1,10 @@
-package plugin.extensions.v1.core
+package plugin.extensions.core
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.event.ContextStartedEvent
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
-import plugin.extensions.v1.CoreService
+import plugin.extensions.CoreService
 
 @Component
 class PluginLoader(

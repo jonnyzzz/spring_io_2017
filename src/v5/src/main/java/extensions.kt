@@ -1,8 +1,8 @@
-package plugin.extensions.v5.core
+package plugin.extensions.core
 
 import org.springframework.stereotype.Component
-import plugin.extensions.v5.Extension
-import plugin.extensions.v5.ExtensionHolder
+import plugin.extensions.Extension
+import plugin.extensions.ExtensionHolder
 import java.util.*
 
 interface ExtensionRegistry {

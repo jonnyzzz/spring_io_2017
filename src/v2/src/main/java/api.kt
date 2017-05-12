@@ -1,4 +1,4 @@
-package plugin.extensions.v2
+package plugin.extensions
 
 annotation class ProvidedByPlugin
 annotation class ProvidedByCore
@@ -20,10 +20,4 @@ interface ExtensionHolder {
 @ProvidedByCore
 interface CoreService {
   fun `loren ipsum`()
-}
-
-
-fun allUsed() {
-  ExtensionRegistry::register
-  ExtensionHolder::extensions
 }
