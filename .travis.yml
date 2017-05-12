@@ -1,5 +1,8 @@
 language: java
 
-script:
+#jdk:
+#  - oraclejdk8
+
+before_install:
  - ./gradlew assemble --info --stacktrace
 
