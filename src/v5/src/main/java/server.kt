@@ -9,7 +9,7 @@ class ServerBean(
 ) {
   fun run() {
     extensionHolder.extensions.forEach {
-      println("Extension detected: ${it.javaClass.simpleName}")
+      println("Detected Extension: ${it.javaClass.simpleName}")
     }
   }
 }
