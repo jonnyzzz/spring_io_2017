@@ -22,6 +22,7 @@ class Extension2Impl : Extension {
 @Component
 class ServiceFromThePlugin2Impl : ServiceFromThePlugin2 {
   override fun test() {
+    println("Plugin 2 #test()")
   }
 
   init {

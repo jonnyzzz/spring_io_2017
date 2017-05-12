@@ -1,4 +1,4 @@
-final String baseName = project.path + ":va-"
+final String baseName = ":src:vA-projects:va-"
 
 configure(project("${baseName}core")) {
     dependencies {
@@ -22,4 +22,10 @@ configure([
     dependencies {
         compile project("${baseName}api")
     }
+}
+
+
+task runExample(type: JavaExec) {
+    main = 'plugin.extensions.core.MainKt'
+    classpath project(":src:vA-projects:va-main").sourceSets.main.runtimeClasspath
 }

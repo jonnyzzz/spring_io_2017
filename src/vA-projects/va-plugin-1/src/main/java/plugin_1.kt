@@ -28,9 +28,11 @@ class Plugin1Service(
 
 @Component
 class ServiceFromThePlugin1Impl : ServiceFromThePlugin1 {
-  override fun test() {
-  }
   init {
     println("Plugin 1 Exported")
+  }
+
+  override fun test() {
+    println("Plugin 1 #test()")
   }
 }
