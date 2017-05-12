@@ -1,5 +1,0 @@
-
-task runExample(type: JavaExec) {
-  main = 'plugin.extensions.v4.core.MainKt'
-  classpath project.sourceSets.main.runtimeClasspath
-}
