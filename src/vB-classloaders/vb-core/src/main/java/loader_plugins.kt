@@ -4,11 +4,7 @@ import org.springframework.beans.factory.InitializingBean
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.AnnotationConfigApplicationContext
-import org.springframework.context.annotation.Bean
-import org.springframework.stereotype.Component
 import plugin.extensions.Extension
-import plugin.extensions.ServiceFromThePlugin1
-import plugin.extensions.ServiceFromThePlugin2
 import java.io.File
 import java.net.URLClassLoader
 
@@ -52,17 +48,3 @@ abstract class PluginLoader(
           = context!!.getBean(T::class.java)!!
 }
 
-@Component
-class Plugin_1Loader : PluginLoader("plugin_1") {
-  @Bean
-  fun getSharedBean(): ServiceFromThePlugin1
-          = getPluginBean()
-}
-
-@Component
-class Plugin_2Loader : PluginLoader("plugin_2") {
-  @Bean
-  fun getSharedBean2(): ServiceFromThePlugin2
-          = getPluginBean()
-
-}

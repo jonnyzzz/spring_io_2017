@@ -29,10 +29,12 @@ class Plugin1Service(
 
 @Component
 class ServiceFromThePlugin1Impl : ServiceFromThePlugin1 {
-  override fun test() {
-  }
   init {
     println("Plugin 1 Exported")
+  }
+
+  override fun test() {
+    println("Plugin 1 #test()")
   }
 }
 
@@ -53,6 +55,8 @@ class Plugin1Guava {
 @Component
 class PluginGuavaVersion {
   init {
+    println()
+
     val clazz = ImmutableList::class.java
     val guava = clazz.getResource("/" + clazz.name.replace(".", "/") + ".class").toString()
 
@@ -61,5 +65,7 @@ class PluginGuavaVersion {
       guava.contains("guava-14.0.jar") -> println("Plugin 1 Guava 14    URL " + guava)
       else ->                             println("Plugin 1 Guava ???   URL " + guava)
     }
+
+    println()
   }
 }

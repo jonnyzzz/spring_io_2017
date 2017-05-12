@@ -1,35 +1,33 @@
-final String baseName = project.path + ":vb-"
-
-configure(project("${baseName}core")) {
+configure(project(":src:vB-classloaders:vb-core")) {
     dependencies {
-        compile project("${baseName}api")
+        compile project(":src:vB-classloaders:vb-api")
     }
 }
 
-configure(project("${baseName}main")) {
+configure(project(":src:vB-classloaders:vb-main")) {
     dependencies {
-        compile project("${baseName}api")
-        compile project("${baseName}core")
+        compile project(":src:vB-classloaders:vb-api")
+        compile project(":src:vB-classloaders:vb-core")
     }
 }
 
-configure(project("${baseName}core")) {
+configure(project(":src:vB-classloaders:vb-core")) {
     dependencies {
-        compile project("${baseName}api")
+        compile project(":src:vB-classloaders:vb-api")
     }
 }
 
 
-configure(project("${baseName}plugin-1")) {
+configure(project(":src:vB-classloaders:vb-plugin-1")) {
     dependencies {
-        compile project("${baseName}api")
+        compile project(":src:vB-classloaders:vb-api")
         compile 'com.google.guava:guava:21.0'
     }
 }
 
-configure(project("${baseName}plugin-2")) {
+configure(project(":src:vB-classloaders:vb-plugin-2")) {
     dependencies {
-        compile project("${baseName}api")
+        compile project(":src:vB-classloaders:vb-api")
         compile 'com.google.guava:guava:14.0'
     }
 }
@@ -37,10 +35,13 @@ configure(project("${baseName}plugin-2")) {
 
 task runExample(type: JavaExec) {
     main = 'plugin.extensions.core.MainKt'
-    classpath project("${baseName}main").sourceSets.main.runtimeClasspath
+    classpath project(":src:vB-classloaders:vb-main").sourceSets.main.runtimeClasspath
 
-    def commonClasspath = project("${baseName}core").sourceSets.main.runtimeClasspath
+    def commonClasspath = project(":src:vB-classloaders:vb-core").sourceSets.main.runtimeClasspath
 
-    environment "classpath_plugin_1", (project("${baseName}plugin-1").sourceSets.main.runtimeClasspath - commonClasspath).asPath
-    environment "classpath_plugin_2", (project("${baseName}plugin-2").sourceSets.main.runtimeClasspath - commonClasspath).asPath
+    environment "classpath_plugin_1", (project(":src:vB-classloaders:vb-plugin-1").sourceSets.main.runtimeClasspath - commonClasspath).asPath
+    environment "classpath_plugin_2", (project(":src:vB-classloaders:vb-plugin-2").sourceSets.main.runtimeClasspath - commonClasspath).asPath
 }
+
+runExample.dependsOn project(":src:vB-classloaders:vb-plugin-1").tasks.classes
+runExample.dependsOn project(":src:vB-classloaders:vb-plugin-2").tasks.classes
