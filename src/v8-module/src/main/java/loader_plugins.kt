@@ -16,8 +16,7 @@ abstract class PluginLoader(
   @Autowired lateinit var registry: ExtensionRegistry
   @Autowired lateinit var parentContext : ApplicationContext
 
-  @PublishedApi
-  internal var context = null as AnnotationConfigApplicationContext?
+  var context = null as AnnotationConfigApplicationContext?
 
   override fun afterPropertiesSet() {
     println("PluginLoader: loading plugin $name...")
