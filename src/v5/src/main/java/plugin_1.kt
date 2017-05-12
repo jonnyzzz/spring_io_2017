@@ -2,6 +2,7 @@ package plugin.extensions.v5.plugin_1
 
 import org.springframework.stereotype.Component
 import plugin.extensions.v5.CoreService
+import plugin.extensions.v5.Extension
 
 @Component
 class Plugin1Component {
@@ -14,7 +15,7 @@ class Plugin1Component {
 class Plugin1Service(
         core: CoreService,
         bean: Plugin1Component
-) {
+) : Extension {
   init {
     println("Plugin 1 Service")
 

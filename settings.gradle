@@ -2,7 +2,6 @@ rootProject.name = "Spring I/o 2017. SubContainers Demo"
 
 include ":src:v1"
 include ":src:v2"
-include ":src:v3"
 include ":src:v4"
 include ":src:v5"
 
