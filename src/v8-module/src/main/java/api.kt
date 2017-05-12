@@ -20,7 +20,7 @@ interface CoreService {
 
 
 @ProvidedByPlugin
-interface ServiceFromThePlugin {
+interface ServiceFromThePlugin1 {
   fun test()
 }
 
