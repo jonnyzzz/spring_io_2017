@@ -22,13 +22,7 @@ subprojects {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8"
  
     compile 'org.springframework:spring-context:4.3.8.RELEASE'
-
-
-    compile  'org.slf4j:slf4j-api:1.7.25'
-    compile  'org.slf4j:slf4j-nop:1.7.25'
-    compile  'org.slf4j:jcl-over-slf4j:1.7.25'
-    compile  'org.slf4j:jul-to-slf4j:1.7.25'
-    compile  'org.slf4j:log4j-over-slf4j:1.7.25'
+    
   }
 
 }
