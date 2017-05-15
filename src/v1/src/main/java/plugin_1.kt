@@ -19,6 +19,6 @@ class Plugin1Service(
     println("Plugin 1 Service")
     
     //call common component
-    core.`loren ipsum`()
+    core.service()
   }
 }

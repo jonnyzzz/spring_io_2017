@@ -15,5 +15,5 @@ interface ExtensionHolder {
 
 @ProvidedByCore
 interface CoreService {
-  fun `loren ipsum`()
+  fun service()
 }

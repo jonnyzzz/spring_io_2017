@@ -20,6 +20,6 @@ class Plugin1Service(
 
     //call common component
     //TODO: Not from constructor, please!
-    core.`loren ipsum`()
+    core.service()
   }
 }
