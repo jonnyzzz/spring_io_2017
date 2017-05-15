@@ -10,14 +10,11 @@ abstract class PluginLoader(val name: String) : InitializingBean {
   var context = null as AnnotationConfigApplicationContext?
 
   protected inline fun <reified T> getPluginBean()
-          = context?.getBean(T::class.java) ?: error("No bean...")
+          = context?.getBean(T::class.java)?: error("No bean")
 
   override fun afterPropertiesSet() {
-    println("PluginLoader: loading plugin $name...")
-
     val context = AnnotationConfigApplicationContext()
     this.context = context
-
     context.parent = parentContext
     context.displayName = "plugin: $name"
     context.scan("plugin.extensions." + name)
