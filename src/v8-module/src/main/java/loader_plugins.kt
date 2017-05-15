@@ -3,10 +3,6 @@ package plugin.extensions.core
 import org.springframework.beans.factory.BeanNameAware
 import org.springframework.beans.factory.InitializingBean
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.beans.factory.config.BeanDefinitionHolder
-import org.springframework.beans.factory.config.DependencyDescriptor
-import org.springframework.beans.factory.support.DefaultListableBeanFactory
-import org.springframework.beans.factory.support.SimpleAutowireCandidateResolver
 import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import plugin.extensions.Extension
@@ -34,6 +30,7 @@ abstract class PluginLoader(
     context.displayName = "plugin: $name"
     context.scan(Extension::class.java.`package`.name + "." + name)
 
+/*
     (context.beanFactory as DefaultListableBeanFactory).autowireCandidateResolver =
             object : SimpleAutowireCandidateResolver() {
               override fun isAutowireCandidate(bdHolder: BeanDefinitionHolder,
@@ -41,6 +38,7 @@ abstract class PluginLoader(
                       = super.isAutowireCandidate(bdHolder, descriptor) &&
                       beanFactoryName != bdHolder.beanDefinition.factoryBeanName
             }
+*/
     
     context.refresh()
 
