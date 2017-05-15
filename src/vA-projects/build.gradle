@@ -13,12 +13,23 @@ configure(project(":src:vA-projects:va-main")) {
   }
 }
 
-configure([
-        project(":src:vA-projects:va-core"),
-        project(":src:vA-projects:va-plugin-1"),
-        project(":src:vA-projects:va-plugin-2")]) {
+configure(project(":src:vA-projects:va-core")) {
   dependencies {
     compile project(":src:vA-projects:va-api")
+  }
+}
+
+configure(project(":src:vA-projects:va-plugin-1")) {
+  dependencies {
+    compile project(":src:vA-projects:va-api")
+    compile 'com.google.guava:guava:21.0'
+  }
+}
+
+configure(project(":src:vA-projects:va-plugin-2")) {
+  dependencies {
+    compile project(":src:vA-projects:va-api")
+    compile 'com.google.guava:guava:14.0'
   }
 }
 
