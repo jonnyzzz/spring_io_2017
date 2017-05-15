@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component
 class RootContext {
   fun start() {
     val root = AnnotationConfigApplicationContext()
-    root.scan(RootContext::class.java.`package`.name)
+    root.scan("plugin.extensions.core")
 
     println()
     println("RootContext: RefreshEvent")
