@@ -7,8 +7,7 @@ import plugin.extensions.ServiceFromThePlugin1
 @Component
 class Plugin_1Loader : PluginLoader("plugin_1") {
   @Bean
-  fun getSharedBean(): ServiceFromThePlugin1
-          = getPluginBean()
+  fun getSharedBean() = pluginContext.getBean(ServiceFromThePlugin1::class.java)
 }
 
 

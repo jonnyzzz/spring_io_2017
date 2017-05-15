@@ -11,9 +11,7 @@ abstract class PluginLoader(
         val name: String
 ) : InitializingBean {
   @Autowired lateinit var parentContext : ApplicationContext
-
-  @PublishedApi
-  internal var context = null as AnnotationConfigApplicationContext?
+  lateinit var pluginContext: AnnotationConfigApplicationContext
 
   override fun afterPropertiesSet() {
     println("PluginLoader: loading plugin $name...")
@@ -25,17 +23,12 @@ abstract class PluginLoader(
 
     val classloader = URLClassLoader(ucp.toTypedArray(), javaClass.classLoader)
 
-    val context = AnnotationConfigApplicationContext()
-    this.context = context
-
-    context.parent = parentContext
-    context.displayName = "plugin: $name"
-    context.classLoader = classloader
-    context.scan("plugin.extensions." + name)
-    context.refresh()
+    pluginContext = AnnotationConfigApplicationContext()
+    pluginContext.parent = parentContext
+    pluginContext.displayName = "plugin: $name"
+    pluginContext.classLoader = classloader
+    pluginContext.scan("plugin.extensions." + name)
+    pluginContext.refresh()
   }
-
-  protected inline fun <reified T> getPluginBean()
-          = context!!.getBean(T::class.java)!!
 }
 

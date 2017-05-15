@@ -12,9 +12,8 @@ abstract class PluginLoader(
 ) : InitializingBean, BeanNameAware {
   @Autowired lateinit var registry: ExtensionRegistry
   @Autowired lateinit var parentContext : ApplicationContext
-
-  var context = null as AnnotationConfigApplicationContext?
-  var beanFactoryName = null as String?
+  lateinit var pluginContext: AnnotationConfigApplicationContext
+  lateinit var beanFactoryName : String
 
   override fun setBeanName(name: String?) {
     beanFactoryName = name!!
@@ -23,15 +22,15 @@ abstract class PluginLoader(
   override fun afterPropertiesSet() {
     println("PluginLoader: loading plugin $name...")
 
-    val context = AnnotationConfigApplicationContext()
-    this.context = context
+    val pluginContext = AnnotationConfigApplicationContext()
+    this.pluginContext = pluginContext
 
-    context.parent = parentContext
-    context.displayName = "plugin: $name"
-    context.scan("plugin.extensions." + name)
+    pluginContext.parent = parentContext
+    pluginContext.displayName = "plugin: $name"
+    pluginContext.scan("plugin.extensions." + name)
 
 /*
-    (context.beanFactory as DefaultListableBeanFactory).autowireCandidateResolver =
+    (pluginContext.beanFactory as DefaultListableBeanFactory).autowireCandidateResolver =
             object : SimpleAutowireCandidateResolver() {
               override fun isAutowireCandidate(bdHolder: BeanDefinitionHolder,
                                                descriptor: DependencyDescriptor)
@@ -40,16 +39,13 @@ abstract class PluginLoader(
             }
 */
     
-    context.refresh()
+    pluginContext.refresh()
 
-    context.getBeansOfType(Extension::class.java)
+    pluginContext.getBeansOfType(Extension::class.java)
             .values
             .forEach {
               registry.register(it)
             }
 
   }
-
-  protected inline fun <reified T> getPluginBean()
-          = context!!.getBean(T::class.java)!!
 }

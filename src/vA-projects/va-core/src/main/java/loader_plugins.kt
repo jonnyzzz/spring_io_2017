@@ -7,17 +7,13 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 abstract class PluginLoader(val name: String) : InitializingBean {
   @Autowired lateinit var parentContext : ApplicationContext
-  var context = null as AnnotationConfigApplicationContext?
-
-  protected inline fun <reified T> getPluginBean()
-          = context?.getBean(T::class.java)?: error("No bean")
+  lateinit var pluginContext: AnnotationConfigApplicationContext
 
   override fun afterPropertiesSet() {
-    val context = AnnotationConfigApplicationContext()
-    this.context = context
-    context.parent = parentContext
-    context.displayName = "plugin: $name"
-    context.scan("plugin.extensions." + name)
-    context.refresh()
+    pluginContext = AnnotationConfigApplicationContext()
+    pluginContext.parent = parentContext
+    pluginContext.displayName = "plugin: $name"
+    pluginContext.scan("plugin.extensions." + name)
+    pluginContext.refresh()
   }
 }
