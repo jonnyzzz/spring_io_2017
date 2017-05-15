@@ -22,9 +22,7 @@ abstract class PluginLoader(
   override fun afterPropertiesSet() {
     println("PluginLoader: loading plugin $name...")
 
-    val pluginContext = AnnotationConfigApplicationContext()
-    this.pluginContext = pluginContext
-
+    pluginContext = AnnotationConfigApplicationContext()
     pluginContext.parent = parentContext
     pluginContext.displayName = "plugin: $name"
     pluginContext.scan("plugin.extensions." + name)
