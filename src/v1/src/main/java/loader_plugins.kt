@@ -6,9 +6,7 @@ import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
 
 @Component
-class PluginLoader(
-        val detector: PluginDetector
-) {
+class PluginLoader {
   init {
     println("I'm plugin loader")
   }
@@ -17,17 +15,12 @@ class PluginLoader(
   fun onContextStarted(e: ContextStartedEvent) {
     println("PluginLoader: loading plugins...")
 
-    detector.detectPlugins().forEach {
-      val context = AnnotationConfigApplicationContext()
-      context.parent = e.applicationContext
-      context.displayName = "plugin: $it"
-      context.scan("plugin.extensions." + it)
-      context.refresh()
+    for (name in listOf("plugin_1", "plugin_2")) {
+      val pluginContext = AnnotationConfigApplicationContext()
+      pluginContext.parent = e.applicationContext
+      pluginContext.displayName = "plugin: $name"
+      pluginContext.scan("plugin.extensions." + name)
+      pluginContext.refresh()
     }
   }
-}
-
-@Component
-class PluginDetector {
-  fun detectPlugins() = listOf("plugin_1", "plugin_2")
 }

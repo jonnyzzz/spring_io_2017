@@ -8,7 +8,6 @@ import plugin.extensions.Extension
 
 @Component
 class PluginLoader(
-        val detector: PluginDetector,
         val registry: ExtensionRegistry
 ) {
   init {
@@ -19,26 +18,19 @@ class PluginLoader(
   fun onContextStarted(e: ContextStartedEvent) {
     println("PluginLoader: loading plugins...")
 
-    val packages = detector.detectPlugins().map { "plugin.extensions." + it }
     val parentContext = e.applicationContext
-
-    packages.forEach {
+    for (name in listOf("plugin_1", "plugin_2")) {
       val context = AnnotationConfigApplicationContext()
       context.parent = parentContext
-      context.displayName = "plugin: $it"
-      context.scan(it)
+      context.displayName = "plugin: $name"
+      context.scan("plugin.extensions." + name)
       context.refresh()
 
       context.getBeansOfType(Extension::class.java)
-             .values
-             .forEach {
-               registry.register(it)
-             }
+              .values
+              .forEach {
+                registry.register(it)
+              }
     }
   }
-}
-
-@Component
-class PluginDetector {
-  fun detectPlugins() = listOf("plugin_1", "plugin_2")
 }
