@@ -20,7 +20,7 @@ class PluginLoader(
   fun onContextStarted(e: ContextStartedEvent) {
     println("PluginLoader: loading plugins...")
 
-    val packages = detector.detectPlugins().map { ExtensionRegistry::class.java.`package`.name + "." + it }
+    val packages = detector.detectPlugins().map { "plugin.extensions." + it }
     val parentContext = e.applicationContext
 
     packages.forEach {

@@ -28,7 +28,7 @@ abstract class PluginLoader(
 
     context.parent = parentContext
     context.displayName = "plugin: $name"
-    context.scan(Extension::class.java.`package`.name + "." + name)
+    context.scan("plugin.extensions." + name)
 
 /*
     (context.beanFactory as DefaultListableBeanFactory).autowireCandidateResolver =
