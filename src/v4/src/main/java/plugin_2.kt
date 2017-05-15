@@ -28,3 +28,21 @@ class Extension1Impl(
     println("Plugin 2 Extension 2+Reg")
   }
 }
+
+@Component
+class Extension3Impl : Extension {
+  init {
+    println("Plugin 2 Extension 3")
+  }
+}
+
+@Component
+class Extension2ImplReg(
+        registry: ExtensionRegistry,
+        ext: Extension2Impl
+) : Extension {
+  init {
+    registry.register(ext)
+    println("Plugin 2 Extension 3: Reg")
+  }
+}
