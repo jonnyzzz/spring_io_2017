@@ -9,12 +9,12 @@ class Plugin2Component {
     println("Plugin 2 Component")
 
     val clazz = ImmutableList::class.java
-    val guava = clazz.getResource("/" + clazz.name.replace(".", "/") + ".class").toString()
+    val guava = clazz.getResource("/${clazz.name.replace(".", "/")}.class").toString()
 
     when {
-      guava.contains("guava-21.0.jar") -> println("Plugin 2 Component: Guava 21(!) URL " + guava)
-      guava.contains("guava-14.0.jar") -> println("Plugin 2 Component: Guava 14    URL " + guava)
-      else ->                             println("Plugin 2 Component: Guava ???   URL " + guava)
+      guava.contains("guava-21.0.jar") -> println("Plugin 2 Component: Guava 21(!) URL $guava")
+      guava.contains("guava-14.0.jar") -> println("Plugin 2 Component: Guava 14    URL $guava")
+      else ->                             println("Plugin 2 Component: Guava ???   URL $guava")
     }
   }
 }

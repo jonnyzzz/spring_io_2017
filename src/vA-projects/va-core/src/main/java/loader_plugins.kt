@@ -13,7 +13,7 @@ abstract class PluginLoader(val name: String) : InitializingBean {
     pluginContext = AnnotationConfigApplicationContext()
     pluginContext.parent = parentContext
     pluginContext.displayName = "plugin: $name"
-    pluginContext.scan("plugin.extensions." + name)
+    pluginContext.scan("plugin.extensions.$name")
     pluginContext.refresh()
   }
 }

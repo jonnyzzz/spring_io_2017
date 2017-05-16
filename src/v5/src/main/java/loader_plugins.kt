@@ -23,7 +23,7 @@ class PluginLoader(
       val context = AnnotationConfigApplicationContext()
       context.parent = parentContext
       context.displayName = "plugin: $name"
-      context.scan("plugin.extensions." + name)
+      context.scan("plugin.extensions.$name")
       context.refresh()
 
       context.getBeansOfType(Extension::class.java)

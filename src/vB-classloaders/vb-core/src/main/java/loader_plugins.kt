@@ -27,7 +27,7 @@ abstract class PluginLoader(
     pluginContext.parent = parentContext
     pluginContext.displayName = "plugin: $name"
     pluginContext.classLoader = classloader
-    pluginContext.scan("plugin.extensions." + name)
+    pluginContext.scan("plugin.extensions.$name")
     pluginContext.refresh()
   }
 }

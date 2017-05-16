@@ -19,7 +19,7 @@ class PluginLoader {
       val pluginContext = AnnotationConfigApplicationContext()
       pluginContext.parent = e.applicationContext
       pluginContext.displayName = "plugin: $name"
-      pluginContext.scan("plugin.extensions." + name)
+      pluginContext.scan("plugin.extensions.$name")
       pluginContext.refresh()
     }
   }
