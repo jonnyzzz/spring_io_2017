@@ -1,0 +1,47 @@
+configure(project(":src:vC:vc-core")) {
+    dependencies {
+        compile project(":src:vC:vc-api")
+    }
+}
+
+configure(project(":src:vC:vc-main")) {
+    dependencies {
+        compile project(":src:vC:vc-api")
+        compile project(":src:vC:vc-core")
+    }
+}
+
+configure(project(":src:vC:vc-core")) {
+    dependencies {
+        compile project(":src:vC:vc-api")
+    }
+}
+
+
+configure(project(":src:vC:vc-plugin-1")) {
+    dependencies {
+        compile project(":src:vC:vc-api")
+        compile 'com.google.guava:guava:21.0'
+    }
+}
+
+configure(project(":src:vC:vc-plugin-2")) {
+    dependencies {
+        compile project(":src:vC:vc-api")
+        compile 'com.google.guava:guava:14.0'
+    }
+}
+
+
+task runExample(type: JavaExec) {
+    main = 'plugin.extensions.core.MainKt'
+    classpath project(":src:vC:vc-main").sourceSets.main.runtimeClasspath
+
+    def commonClasspath = project(":src:vC:vc-core").sourceSets.main.runtimeClasspath
+
+    environment "classpath_plugin_1", (project(":src:vC:vc-plugin-1").sourceSets.main.runtimeClasspath - commonClasspath).asPath
+    environment "classpath_plugin_2", (project(":src:vC:vc-plugin-2").sourceSets.main.runtimeClasspath - commonClasspath).asPath
+}
+
+runExample.dependsOn project(":src:vC:vc-plugin-1").tasks.classes
+runExample.dependsOn project(":src:vC:vc-plugin-2").tasks.classes
