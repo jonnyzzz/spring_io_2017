@@ -10,7 +10,17 @@ class ServerBean(
         val ext2 : ServiceFromThePlugin2
 ) {
   fun run() {
-    (ext1.test() + ext2.test()).forEach {
+    val la = ext1.test()
+    val lb = ext2.test()
+
+    println("Type1: ${la.javaClass}")
+    println("Type1: ${la.javaClass.classLoader}")
+    println("Type2: ${lb.javaClass}")
+    println("Type2: ${lb.javaClass.classLoader}")
+
+    println("Type1 == Type2: ${la.javaClass.equals(lb.javaClass)}")
+
+    (la + lb).forEach {
       println(">> $it")
     }
   }

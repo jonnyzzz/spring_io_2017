@@ -21,7 +21,11 @@ abstract class PluginLoader(
 
     val ucp = classpath.split(File.pathSeparatorChar).map { File(it).toURI().toURL() }
 
-    val classloader = URLClassLoader(ucp.toTypedArray(), javaClass.classLoader)
+    val classloader = object : URLClassLoader(ucp.toTypedArray(), javaClass.classLoader) {
+      override fun toString(): String {
+        return "$name Loader: " + super.toString()
+      }
+    }
 
     pluginContext = AnnotationConfigApplicationContext()
     pluginContext.parent = parentContext
