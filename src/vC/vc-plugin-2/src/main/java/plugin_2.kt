@@ -11,8 +11,10 @@ class ServiceFromThePlugin2Impl : ServiceFromThePlugin2 {
     println("Plugin 2 Exported")
   }
 
-  override fun test() {
+  override fun test() : List<String> {
     println("Plugin 2 #test()")
+
+    return ImmutableList.of("X", "Y", "Z")
   }
 }
 

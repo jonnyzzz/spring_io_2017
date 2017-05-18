@@ -10,9 +10,8 @@ class ServerBean(
         val ext2 : ServiceFromThePlugin2
 ) {
   fun run() {
-
-    ext1.test()
-
-    ext2.test()
+    (ext1.test() + ext2.test()).forEach {
+      println(">> $it")
+    }
   }
 }

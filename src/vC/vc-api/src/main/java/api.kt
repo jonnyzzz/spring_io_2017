@@ -5,12 +5,12 @@ annotation class ProvidedByCore
 
 @ProvidedByPlugin
 interface ServiceFromThePlugin1 {
-  fun test()
+  fun test() : List<String>
 }
 
 @ProvidedByPlugin
 interface ServiceFromThePlugin2 {
-  fun test()
+  fun test() : List<String>
 }
 
 
